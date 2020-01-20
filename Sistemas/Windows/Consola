@@ -1,0 +1,4 @@
+#Abrir listado de comandos ejecutados
+Get-PSReadlineOption
+#fichero:
+C:\Users\sgomez\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine\ConsoleHost_history.txt
