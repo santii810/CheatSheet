@@ -1,0 +1,44 @@
+
+function getRequest(user,pass){
+    const echoPostRequest = {
+    url: pm.environment.get('Host')+'login',
+    method: 'POST',
+    header: 'Content-Type:application/json',
+    body: {
+    mode: 'application/json',
+    raw: JSON.stringify(
+        {
+        	username:user,
+        	password:pass,
+        })
+    }
+    };
+    return echoPostRequest;
+}
+
+pm.sendRequest(getRequest('santi','santi'), function (err, res) {
+    console.log(err ? err : res.json());
+        if (err === null) {
+            console.log('Saving the token and expiry date')
+            var responseJson = res.json();
+            pm.environment.set('santi', responseJson.token)
+        }
+    });
+    
+pm.sendRequest(getRequest('bqa','bqa'), function (err, res) {
+    console.log(err ? err : res.json());
+        if (err === null) {
+            console.log('Saving the token and expiry date')
+            var responseJson = res.json();
+            pm.environment.set('bqa', responseJson.token)
+        }
+    });
+    
+pm.sendRequest(getRequest('tecnico1','tecnico1'), function (err, res) {
+    console.log(err ? err : res.json());
+        if (err === null) {
+            console.log('Saving the token and expiry date')
+            var responseJson = res.json();
+            pm.environment.set('tecnico', responseJson.token)
+        }
+    });
