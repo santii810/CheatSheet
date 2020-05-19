@@ -1,3 +1,15 @@
 --Ejecutar flyway desde fichero de configuración
 -- https://flywaydb.org/documentation/migrations#schema-history-table
 flyway:clean flyway:migrate -Dflyway.configFile=conf/optare/db/flyway-dev.properties
+
+
+--Ver la tabla con el squema de flyway
+SELECT * from schema_version order by installed_on desc
+
+
+-- repara los checksum de flyway 
+mvn flyway:repair
+
+
+-- Ejecura solo hasta este target:
+-Dflyway.target=1.27
