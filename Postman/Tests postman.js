@@ -9,3 +9,11 @@ console.log(itemSincronismo);
 tests["Sincronismo OK"] = itemSincronismo.status == "Test OK";
 tests["Puerto OK"] = itemSincronismo.oltPort < 17;
 tests["Slot bien"] = itemSincronismo.oltCard < 7;
+
+
+
+//---------------------------------------------------------
+tests["Status code is 200"] = responseCode.code === 200;
+
+var data = JSON.parse(responseBody);
+pm.environment.set("user", data.jwtToken)
