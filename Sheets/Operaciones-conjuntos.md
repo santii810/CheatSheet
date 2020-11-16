@@ -8,7 +8,7 @@ Intersección entre conjuntos
 
 
 --Conjunto B - Conjunto A  
-`=SI.ERROR(filter($B$2:$B; ESERROR(COINCIDIR($A$2:$A; B2:$B ; FALSO))); "no match")`
+`=SI.ERROR(filter($A$2:$A; ESERROR(COINCIDIR($B$2:$B; $A$2:$A ; FALSO))); "no match")`
 
 
 
