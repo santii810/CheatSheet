@@ -1,0 +1,28 @@
+    var users = [
+        ['admin','santi','santi']
+    ]
+function getRequest(user,pass){
+    const echoPostRequest = {
+    url: pm.environment.get('server')+'/login',
+    method: 'POST',
+    header: 'Content-Type:application/json',
+    body: {
+    mode: 'application/json',
+    raw: JSON.stringify(
+        {
+        	login:user,
+        	password:pass,
+        })
+    }
+    };
+    return echoPostRequest;
+}
+
+
+pm.sendRequest(getRequest("santi", "santi"), function (err, res) {
+    console.log(err ? err : res.json());
+        if (err === null) {
+            var responseJson = res.json();
+            pm.request.headers.add({key: 'Authorization', value: responseJson.token})
+        }
+    });
